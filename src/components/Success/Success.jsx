@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 import styles from './Success.module.scss'
 
@@ -12,12 +13,14 @@ const Success = () => {
                 <h1>Почта подтверждена!</h1>
                 <p>На Ваш электронный адрес выслан бланк пассажирской таможенной декларации и штрих-код для 
                     доступа к быстрой печати с сенсорного терминала</p>
+                    <Link to='/'>
                 <div className={styles.return}>
                     Вернуться
                 </div>
+                </Link>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Success;
+export default Success

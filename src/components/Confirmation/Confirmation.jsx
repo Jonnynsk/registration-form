@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 import styles from './Confirmation.module.scss'
 
@@ -12,14 +13,15 @@ const Confirmation = () => {
                 <h1>Подтверждение</h1>
                 <p>На Ваш электронный адрес был выслан код,
                      введите его ниже</p>
-                
+                     <Link to='/success'>
                 <div className={styles.continue}>
                     Продолжить
                 </div>
+                </Link>
                 <p className={styles.gos}>Выслать код повторно</p>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Confirmation;
+export default Confirmation

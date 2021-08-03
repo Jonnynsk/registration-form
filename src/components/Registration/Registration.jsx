@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 import styles from './Registration.module.scss'
 
@@ -12,13 +13,15 @@ const Registration = () => {
                 <h1>Без регистрации</h1>
                 <p>Введите адрес электронной почты</p>
                 <input type='text' placeholder='Введите email' />
-                <div className={styles.continue}>
-                    Продолжить
-                </div>
+                <Link to='/confirmation'>
+                    <div className={styles.continue}>
+                        Продолжить
+                    </div>
+                </Link>
                 <p className={styles.gos}>Вход через Госуслуги</p>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Registration;
+export default Registration
