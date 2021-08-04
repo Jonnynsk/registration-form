@@ -9,7 +9,7 @@ const Success = () => {
     return (
         <div className={styles.registration}>
             <div className={styles.form}>
-                <img src={done} />
+                <img src={done} alt='done'/>
                 <h1>Почта подтверждена!</h1>
                 <p>На Ваш электронный адрес выслан бланк пассажирской таможенной декларации и штрих-код для 
                     доступа к быстрой печати с сенсорного терминала</p>
