@@ -33,7 +33,6 @@ const Registration = () => {
                 <p>Введите адрес электронной почты</p>
 
                     <form onSubmit={handleSubmit}>
-                        <lable htmlFor='email'></lable>
                         <input 
                             type='text'
                             value={values.email}
@@ -42,6 +41,7 @@ const Registration = () => {
                             placeholder='Введите email' 
                             name='email'
                             id='email'
+                            autoFocus
                         />
                         {touched.email && errors.email ? (
                             <div>{errors.email}</div>
