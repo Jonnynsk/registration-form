@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import { useHistory } from 'react-router';
@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import styles from './Confirmation.module.scss'
 
 import eclipse from '../../assets/Ellipse 24.svg'
-
+import { useEffect } from 'react';
 
 const Confirmation = () => {
 
@@ -25,7 +25,7 @@ const Confirmation = () => {
             password2: Yup.string().matches(/3/, 'Неверный код').required('Обязательное поле'),
             password3: Yup.string().matches(/4/, 'Неверный код').required('Обязательное поле')
         }),
-        onSubmit: (values) => {
+        onSubmit: () => {
             console.log(`Password: ${code}`)
             history.push('/success')
         }
@@ -34,15 +34,48 @@ const Confirmation = () => {
     const [code, setCode] = useState('')
 
     const codeToConfirm = () => {
-        const newCode = 
-        `
+        const newCode =
+            `
         ${values.password}
         ${values.password1}
-        ${values.password2
-        }${values.password3}
+        ${values.password2}
+        ${values.password3}
         `
         setCode(newCode)
     }
+
+    const firstRef = useRef(null)
+    const secondRef = useRef(null)
+    const thirdRef = useRef(null)
+    const fourthRef = useRef(null)
+
+    useEffect(() => {
+        firstRef.current && firstRef.current.focus()
+    }, [])
+    useEffect(() => {
+        if (values.password.length === 1) {
+            secondRef.current.focus()
+        }
+    }, [values.password.length])
+
+    useEffect(() => {
+        firstRef.current && firstRef.current.focus()
+    }, [])
+    useEffect(() => {
+        if (values.password1.length === 1) {
+            thirdRef.current.focus()
+        }
+    }, [values.password1.length])
+
+    useEffect(() => {
+        firstRef.current && firstRef.current.focus()
+    }, [])
+    useEffect(() => {
+        if (values.password2.length === 1) {
+            fourthRef.current.focus()
+        }
+    }, [values.password2.length])
+
 
     return (
         <div className={styles.registration}>
@@ -53,7 +86,7 @@ const Confirmation = () => {
                     введите его ниже</p>
 
                 <form onSubmit={handleSubmit}>
-                    <input 
+                    <input
                         type='text'
                         value={values.password}
                         onChange={handleChange}
@@ -61,9 +94,9 @@ const Confirmation = () => {
                         name='password'
                         id='password'
                         maxLength='1'
-                        autoFocus
+                        ref={firstRef}
                     />
-                    <input 
+                    <input
                         type='text'
                         value={values.password1}
                         onChange={handleChange}
@@ -71,9 +104,9 @@ const Confirmation = () => {
                         name='password1'
                         id='password1'
                         maxLength='1'
-                        
+                        ref={secondRef}
                     />
-                    <input 
+                    <input
                         type='text'
                         value={values.password2}
                         onChange={handleChange}
@@ -81,8 +114,9 @@ const Confirmation = () => {
                         name='password2'
                         id='password2'
                         maxLength='1'
+                        ref={thirdRef}
                     />
-                    <input 
+                    <input
                         type='text'
                         value={values.password3}
                         onChange={handleChange}
@@ -90,6 +124,7 @@ const Confirmation = () => {
                         name='password3'
                         id='password3'
                         maxLength='1'
+                        ref={fourthRef}
                     />
                     {/* {touched.password && errors.password ? (
                         <div>{errors.password}</div>
@@ -97,7 +132,7 @@ const Confirmation = () => {
                     <button onClick={codeToConfirm} className={styles.continue} type='submit'>Продолжить</button>
                 </form>
                 {code}
-                <p className={styles.gos}>Выслать код повторно</p>
+                <p className={styles.gos} onClick={() => alert('Код отправлен повторно')}>Выслать код повторно</p>
             </div>
         </div>
     )
