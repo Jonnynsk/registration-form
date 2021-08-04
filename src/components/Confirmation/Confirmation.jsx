@@ -9,7 +9,7 @@ const Confirmation = () => {
     return (
         <div className={styles.registration}>
             <div className={styles.form}>
-                <img src={eclipse} />
+                <img src={eclipse} alt='eclipse'/>
                 <h1>Подтверждение</h1>
                 <p>На Ваш электронный адрес был выслан код,
                      введите его ниже</p>

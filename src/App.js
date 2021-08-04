@@ -1,4 +1,4 @@
-import { Route, Router, Switch } from 'react-router'
+import { Route, Switch } from 'react-router'
 
 import './App.css'
 
