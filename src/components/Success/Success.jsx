@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import done from '../../assets/Vector.svg'
+
 import styles from './Success.module.scss'
 
-import done from '../../assets/Vector.svg'
 
 const Success = () => {
     return (

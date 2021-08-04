@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
+import { useHistory } from 'react-router'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
-import { useHistory } from 'react-router';
+
+import eclipse from '../../assets/Ellipse 24.svg'
 
 import styles from './Confirmation.module.scss'
 
-import eclipse from '../../assets/Ellipse 24.svg'
-import { useEffect } from 'react';
 
 const Confirmation = () => {
 
@@ -31,18 +31,16 @@ const Confirmation = () => {
         }
     })
 
+    // The code is saved after confirmation
+
     const [code, setCode] = useState('')
 
     const codeToConfirm = () => {
-        const newCode =
-            `
-        ${values.password}
-        ${values.password1}
-        ${values.password2}
-        ${values.password3}
-        `
+        const newCode = `${values.password}${values.password1}${values.password2}${values.password3}`
         setCode(newCode)
     }
+
+    // Autofocus transition from one input to another
 
     const firstRef = useRef(null)
     const secondRef = useRef(null)
@@ -59,17 +57,11 @@ const Confirmation = () => {
     }, [values.password.length])
 
     useEffect(() => {
-        firstRef.current && firstRef.current.focus()
-    }, [])
-    useEffect(() => {
         if (values.password1.length === 1) {
             thirdRef.current.focus()
         }
     }, [values.password1.length])
 
-    useEffect(() => {
-        firstRef.current && firstRef.current.focus()
-    }, [])
     useEffect(() => {
         if (values.password2.length === 1) {
             fourthRef.current.focus()
@@ -126,12 +118,20 @@ const Confirmation = () => {
                         maxLength='1'
                         ref={fourthRef}
                     />
-                    {/* {touched.password && errors.password ? (
-                        <div>{errors.password}</div>
-                    ) : null} */}
+
+                    {touched.password && errors.password
+                        || touched.password1 && errors.password1
+                        || touched.password2 && errors.password2
+                        || touched.password3 && errors.password3
+                        ? (<div>{errors.password
+                            || errors.password1
+                            || errors.password2
+                            || errors.password3}</div>)
+                        : null}
+
                     <button onClick={codeToConfirm} className={styles.continue} type='submit'>Продолжить</button>
                 </form>
-                {code}
+
                 <p className={styles.gos} onClick={() => alert('Код отправлен повторно')}>Выслать код повторно</p>
             </div>
         </div>
