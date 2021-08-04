@@ -10,7 +10,7 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <div className={styles.navbar}>
-                <Link to='/'><img src={logo} alt='logo'/></Link>
+                <Link to='/'><img src={logo} alt='logo' /></Link>
                 <span>Электронный бланк ПТД</span>
                 <span>Памятка путешественника</span>
                 <span>Информация</span>

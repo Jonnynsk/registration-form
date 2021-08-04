@@ -12,11 +12,11 @@ const App = () => {
     <div className="App">
       <Header />
       <div className='form'>
-          <Switch>
-            <Route path='/' exact><Registration /></Route>
-            <Route path='/confirmation'><Confirmation /></Route>
-            <Route path='/success'><Success /></Route>
-          </Switch>
+        <Switch>
+          <Route path='/' exact><Registration /></Route>
+          <Route path='/confirmation'><Confirmation /></Route>
+          <Route path='/success'><Success /></Route>
+        </Switch>
       </div>
 
     </div>

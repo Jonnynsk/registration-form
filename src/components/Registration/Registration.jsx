@@ -12,7 +12,7 @@ const Registration = () => {
 
     const history = useHistory()
 
-    const {handleSubmit, handleChange, values, touched, errors, handleBlur} = useFormik({
+    const { handleSubmit, handleChange, values, touched, errors, handleBlur } = useFormik({
         initialValues: {
             email: ''
         },
@@ -35,22 +35,21 @@ const Registration = () => {
                     <form onSubmit={handleSubmit}>
                         <lable htmlFor='email'></lable>
                         <input 
-                        type='text'
-                        value={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        placeholder='Введите email' 
-                        name='email'
-                        id='email'
+                            type='text'
+                            value={values.email}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            placeholder='Введите email' 
+                            name='email'
+                            id='email'
                         />
                         {touched.email && errors.email ? (
                             <div>{errors.email}</div>
                         ) : null}
                         <button className={styles.continue} type="submit">Продолжить</button>
                     </form>
-
                     <p className={styles.gos}>Вход через Госуслуги</p>
-        </div>
+         </div>
             </div >
             )
 }

@@ -9,14 +9,14 @@ const Success = () => {
     return (
         <div className={styles.registration}>
             <div className={styles.form}>
-                <img src={done} alt='done'/>
+                <img src={done} alt='done' />
                 <h1>Почта подтверждена!</h1>
-                <p>На Ваш электронный адрес выслан бланк пассажирской таможенной декларации и штрих-код для 
+                <p>На Ваш электронный адрес выслан бланк пассажирской таможенной декларации и штрих-код для
                     доступа к быстрой печати с сенсорного терминала</p>
-                    <Link to='/'>
-                <div className={styles.return}>
-                    Вернуться
-                </div>
+                <Link to='/'>
+                    <div className={styles.return}>
+                        Вернуться
+                    </div>
                 </Link>
             </div>
         </div>
